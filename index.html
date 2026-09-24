@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom CRM — one relationship, the whole desk</title>
+  <meta name="description" content="A custom CRM showpiece. A fictional client moves from first hello to a kept promise. Built to be shaped for a business.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="#desk">Custom CRM</a>
+    <a class="ghost" href="https://github.com/DhananiSneh/custom-crm">Source</a>
+  </header>
+  <main id="desk">
+    <p class="eyebrow">Customized product</p>
+    <h1>Built around the relationship, not a template.</h1>
+    <p class="lede">A CRM shaped for one business. Watch a fictional client cross the desk: hello, fit, build, kept.</p>
+    <button type="button" id="run">Walk the client through</button>
+    <div class="rail" id="rail">
+      <button type="button" data-step="0">Hello</button>
+      <button type="button" data-step="1">Fit</button>
+      <button type="button" data-step="2">Build</button>
+      <button type="button" data-step="3">Kept</button>
+      <i id="bead"></i>
+    </div>
+    <article class="card">
+      <p class="who">I. Shah · fictional</p>
+      <h2 id="title">Waiting</h2>
+      <p id="line">The desk is clear.</p>
+    </article>
+    <p class="by">A custom product by <a href="https://github.com/DhananiSneh">Sneh Dhanani</a>.</p>
+  </main>
+  <script>
+    const beats = [
+      ["Hello", "First note landed. The relationship has a name."],
+      ["Fit", "The work matches. An owner is on it."],
+      ["Build", "The promise is being made, in the open."],
+      ["Kept", "Delivered. The record stays."]
+    ];
+    const title = document.getElementById("title");
+    const line = document.getElementById("line");
+    const bead = document.getElementById("bead");
+    const buttons = [...document.querySelectorAll("#rail button")];
+    let timer = null;
+
+    function show(step) {
+      title.textContent = beats[step][0];
+      line.textContent = beats[step][1];
+      bead.style.transform = "translateX(" + (step * 100) + "%)";
+      buttons.forEach((button, index) => button.classList.toggle("is-on", index <= step));
+    }
+
+    document.getElementById("run").addEventListener("click", () => {
+      if (timer) return;
+      let step = 0;
+      show(0);
+      timer = setInterval(() => {
+        step += 1;
+        if (step > 3) {
+          clearInterval(timer);
+          timer = null;
+          return;
+        }
+        show(step);
+      }, 700);
+    });
+    buttons.forEach((button) => button.addEventListener("click", () => show(Number(button.dataset.step))));
+    show(0);
+  </script>
+</body>
+</html>
