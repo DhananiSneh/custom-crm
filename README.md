@@ -1,12 +1,16 @@
 # Custom CRM
 
-This repository is a public showpiece. A fictional client walks from hello, to fit, to build, to kept.
+A small CRM for one business. Clients move through Hello, Fit, Build, and Kept. Records stay in this browser after a refresh.
 
-## Open it
+![The desk with two clients](images/preview.png)
 
-[dhananisneh.github.io/custom-crm](https://dhananisneh.github.io/custom-crm/)
+## Run it
 
-![Custom CRM](preview.png)
+Open [dhananisneh.github.io/custom-crm](https://dhananisneh.github.io/custom-crm/) or serve this folder and open `index.html`.
+
+```bash
+npm test
+```
 
 ## Author
 
